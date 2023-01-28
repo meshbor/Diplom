@@ -1,7 +1,7 @@
 import React from "react";
 import './index.css';
 
-export function Header(params) {
+export function Header() {
   return(
     <header className="header">
       <div className="container">
