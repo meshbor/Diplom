@@ -1,0 +1,30 @@
+[
+    {
+        "title": "Говядина Велингтон", 
+        "text": "Сочная говяжья вырезка  запеченая в слоеном тесте",
+          "image": "https://adonius.club/uploads/posts/2022-08/1660014316_2-adonius-club-p-vellington-blyudo-krasivo-foto-2.jpg",
+        "tags": ["legendary", "peace", "kaif"],
+        "isFavorite": true
+      },
+      {
+        "title": "Рибай с овощами", 
+        "text": "Выдержанный стейк с овощами на гриле",
+          "image": "https://podacha-blud.com/uploads/posts/2022-06/1654220799_14-podacha-blud-com-p-krasivoe-foto-steikov-foto-16.jpg",
+        "tags": ["legendary", "peace", "kaif"],
+        "isFavorite":false
+      },
+      {
+        "title": "Вепрево колено", 
+        "text": "Свинная рулька с золотистой корочкой",
+          "image": "https://s00.yaplakal.com/pics/pics_original/4/6/9/5445964.jpg",
+        "tags": ["legendary", "peace", "kaif"],
+        "isFavorite":false
+      },
+      {
+        "title": "Венгерский суп-гуляш", 
+        "text": "Насыщенное суп из свинины с картофелем и венгерской паприкой",
+          "image": "https://krasotkasila.ru/wp-content/uploads/2021/07/hungarian-goulash-2000x1200-1.jpg",
+        "tags": ["legendary", "peace", "kaif"],
+        "isFavorite":false
+      }
+]
