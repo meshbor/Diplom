@@ -1,7 +1,8 @@
 .header {
-    width: 100%;
+	position: relative;
+	width: 100%;
     background-color: #0e0d0d;
-    padding: 60px 0;
+    padding: 20px 0;
 	opacity: 50%;
 	
 	
@@ -15,7 +16,7 @@
 }
 
 .search__btn {
-	display: inline-flex;
+	display:inline-block;
 	align-items: center;
 	width: 5em;
 	height: 2em;
@@ -23,6 +24,7 @@
 	
 }
 .search__input {
+	
 	background-color: antiquewhite;
 }
 

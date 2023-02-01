@@ -4,7 +4,6 @@ import './index.css';
 export function Footer(params) {
   return(
     <footer className="footer">
-      <div className="container">
         <div className="top">
 
          <a href="/">   <div className="social">
@@ -20,14 +19,14 @@ export function Footer(params) {
             </div></a>
 
             <a href="/"> <div className="faq"> 
-              <h1> Часто задаваемые вопросы</h1>
+              <h2> Часто задаваемые</h2>
+              <h2> вопросы</h2>
               <h3> FAQ </h3>
             </div></a>
 
         </div>
 
         <div className="bottom"> <h1> " 2023 Кухня выходного дня"</h1></div>
-      </div>
     </footer>
   )
 

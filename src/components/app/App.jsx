@@ -10,9 +10,9 @@ function App() {
   <div className='content_container'>
   <div className='content_carts'>
   <div className="App">
-  <CardList  />
-  <Header />
-  <Footer />
+    <Header />
+    <CardList  />
+    <Footer />
   </div>
  </div>
  </div>)
