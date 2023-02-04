@@ -1,6 +1,6 @@
 import React from "react";
 import './App.css';
-import  {Footer}  from '../Footer/Footer.jsx';
+import  {Footer}  from '../Footer/footer.jsx';
 import  {Header}  from '../Header/Header.jsx';
 import CardList from '../cardList/CardList.jsx';
 
