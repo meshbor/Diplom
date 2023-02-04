@@ -1,9 +1,11 @@
 import React from "react";
 import './index.css';
+import logo from '../assets/logo.svg';
 
 export function Footer(params) {
   return(
     <footer className="footer">
+       
         <div className="top">
 
          <a href="/">   <div className="social">
@@ -26,7 +28,15 @@ export function Footer(params) {
 
         </div>
 
-        <div className="bottom"> <h1> " 2023 Кухня выходного дня"</h1></div>
+        <div className="bottom"> 
+      
+        <a className="logo" title="Логотип">
+             <img src={logo} alt="Логотоп" className="logo"/>
+            </a>
+        <h1> " 2023 Кухня выходного дня"</h1>
+  
+        </div>
+
     </footer>
   )
 

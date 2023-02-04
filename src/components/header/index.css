@@ -1,31 +1,44 @@
 .header {
-	position: relative;
+	display: flex;
+    justify-content: space-between;
 	width: 100%;
-    background-color: #0e0d0d;
+    background-color: #666565;
     padding: 20px 0;
-	opacity: 50%;
+	
+	
+	
+}
+.search {
+	display: flex;
+    justify-content: space-around;
 	
 	
 }
 
-.header__wrapper {
-	display:flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 80px;
-}
 
 .search__btn {
-	display:inline-block;
-	align-items: center;
-	width: 5em;
-	height: 2em;
-	align-items: stretch;
-	
+	width: 60px;
+	height: 25px;
 }
 .search__input {
-	
+	width: 500px;
+	height: 20px;
 	background-color: antiquewhite;
+	}
+
+.logo {
+	width: 60px;
+	height: 60px;
+	fill: black;
+	padding-left: 50px;
+}
+.reg_btn {
+	width: 100px;
+	height: 25px;
+}
+.log_btn {
+	width: 60px;
+	height: 25px;
 }
 
 @media (max-width: 700px) {
