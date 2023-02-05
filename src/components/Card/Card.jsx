@@ -5,10 +5,10 @@ import comment from '../assets/comment.svg';
 import star from '../assets/star.svg'
 
 
-const Card=({title,text,image,isFavorite})=>{ //в скобочках - указываем нужные пропсы, которые прокинули в кардлисте
+const Card=({title,image,likes})=>{ //в скобочках - указываем нужные пропсы, которые прокинули в кардлисте
  return(
 <div className="card">
-    <a href="/product" className="card_link">
+    <a href="/v2/group-9/posts" className="card_link">
 
         
 
@@ -26,7 +26,7 @@ const Card=({title,text,image,isFavorite})=>{ //в скобочках - указ
    
             <button className="card_favorite">
               {/* <img src={Heart} alt="Добавить в избранное" className="card_favorite_ikon"/> */}
-              <Heart className={isFavorite? 'card_favorite_ikon': "card_like"} />
+              <Heart className={likes? 'card_favorite_ikon': "card_like"} />
             </button>
         </div>
 
@@ -35,7 +35,7 @@ const Card=({title,text,image,isFavorite})=>{ //в скобочках - указ
         </div>
 
     <div className="card_comment">
-        <a href="/product">
+        <a href="/v2/:group-9/posts/comments/:postId">
             <img src={comment} alt="Добавить комментарий" className=" card_comment_ikon" />
             
         </a>
