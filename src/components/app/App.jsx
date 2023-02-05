@@ -2,12 +2,17 @@
 import React, { useEffect, useState } from 'react';
 
 // import logo from './logo.svg';
+
+import React from "react";
 import './App.css';
-import CardList from '../cardList/CardList';
+import  {Footer}  from '../Footer/footer.jsx';
+import  {Header}  from '../Header/Header.jsx';
+import CardList from '../cardList/CardList.jsx';
 
 import api from '../utilites/api';
 
 function App() {
+
 
     const [cards, setCards]=useState([]);
     const [currentUser,setCurrentUser]=useState([])
@@ -33,6 +38,18 @@ useEffect(()=>{
    </div>
    
   );
+
+ 
+  return ( 
+  <div className='content_container'>
+  <div className='content_carts'>
+  <div className="App">
+    <Header />
+    <CardList  />
+    <Footer />
+  </div>
+ </div>
+ </div>)
 }
 
 export default App;
