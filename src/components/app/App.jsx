@@ -6,8 +6,8 @@ import  {Header}  from '../Header/Header.jsx';
 import CardList from '../cardList/CardList.jsx';
 import api from '../utilites/api';
 import SearchInfo from '../SearchInfo/index.jsx';
-import Card from '../Card/Card';
-import data from '../assets/data.json'
+import {Form} from '../Form/form.jsx';
+
 
 function App() {
 
@@ -31,8 +31,8 @@ function headlyPostLike(posts){
   const liked = liked.some(id=> id=== currentUser?._id);
   api.changeLikePosts(posts._id, liked).then((newCard)=>{
    const newPost = cards.map((cardState)=>{
-    // console.log('карточка из стейта', cardState);
-    // console.log('карточка из сервера', newCard);
+     console.log('карточка из стейта', cardState);
+     console.log('карточка из сервера', newCard);
    })
   })
  }
@@ -41,7 +41,7 @@ function headlyPostLike(posts){
  }
  useEffect(() => {
   const filteredCards = cards.filter((item) =>
-  item.name.includes(searchQuery)
+  item.name.includes.toUpperCase()(searchQuery.toUpperCase())
   );
   setCards([...filteredCards])
  }, [searchQuery])
@@ -51,7 +51,7 @@ function headlyPostLike(posts){
   <div className='App'>
   <Header changeInput={handleInput}/> 
   <main className='content container'>
-  <SearchInfo searchText={''} searchCount = {''}/>
+  <SearchInfo searchText={searchQuery} searchCount = {cards.length}/>
   <div>
     <CardList  goodData={cards} currentUser ={currentUser} onPostsLike={headlyPostLike}/>
   </div>
