@@ -1,55 +1,57 @@
 
 import React, { useEffect, useState } from 'react';
-
-// import logo from './logo.svg';
-
-import React from "react";
 import './App.css';
-import  {Footer}  from '../Footer/footer.jsx';
-import  {Header}  from '../Header/Header.jsx';
+import  {Footer}  from '../footer/footer.jsx';
+import  {Header}  from '../header/header.jsx';
 import CardList from '../cardList/CardList.jsx';
-
 import api from '../utilites/api';
 
 function App() {
 
 
     const [cards, setCards]=useState([]);
-    const [currentUser,setCurrentUser]=useState([])
+    const [currentUser,setCurrentUser]=useState([null])
 
 
-useEffect(()=>{
-  Promise.all([api.getPostList(),api.getUserInfo() ]).then(([dataPosts, dataUser])=>{
-    setCards(dataPosts);
-    console.log(dataPosts);
-    setCurrentUser(dataUser);
+ useEffect(()=>{
+   Promise.all([api.getPostList(),api.getUserInfo() ]).then(([dataPosts, dataUser])=>{ // промис.олл - не пропустит компиляцию, пока не выполнятся условия
+     setCards(dataPosts);
+    //  console.log(dataPosts);
+     setCurrentUser(dataUser);
+   });
+ },[]);
+
+ function handleUpdateUser(userUpdateData) {
+  api.setUserInfo(userUpdateData).then((newUser) => {
+    setCurrentUser(newUser);
   });
-// api.getPostList().then((data)=>setCards(data.posts));
-// api.getUserInfo().then((dataUser)=>setCurrentUser(dataUser))
-},[])
+}
 
-  return (
-    
-    <div className='content_container'>
-      <div className='content_carts'>
-      
-        <CardList goodData={cards}  />  
-      </div>
-   </div>
-   
-  );
+function headlyPostLike(posts){
+ const liked = posts.likes.some(id=> id=== currentUser?._id); //проверяем , залайкан ли этот пост этим пользователем
+ console.log(liked);
+ api.changeLikePosts(posts._id, liked).then((newCard)=>{ // посылаем апи-запрос серверу с айди 
+  //пользователя и информацией залайкан пост или нет. получаем новую карточку огт сервера
+  const newPost = cards.map((cardState)=>{
+    console.log('карточка из стейта', cardState);
+    console.log('карточка из сервера', newCard);
+    return cardState._id === newCard._id ? newCard : cardState; // берем новую карточку и заменяем ей старую
+  })
+  setCards(newPost)
+ })
+}
 
  
   return ( 
   <div className='content_container'>
-  <div className='content_carts'>
-  <div className="App">
-    <Header />
-    <CardList  />
-    <Footer />
-  </div>
- </div>
- </div>)
+   <div className='content_carts'>
+     <div className="App">
+       <Header user={currentUser} onUpdateUser={handleUpdateUser} />
+       <CardList goodData={cards} currentUser ={currentUser} onPostsLike={headlyPostLike} /> 
+       <Footer />
+     </div>
+    </div>
+  </div>)
 }
 
 export default App;
