@@ -5,12 +5,13 @@ import App from '../src/components/app/App';
 import reportWebVitals from './reportWebVitals';
 import { createRootApp } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
+import { PostPage } from './components/page/postPage';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <App/>
+//  <PostPage/>
 );
 
 // If you want to start measuring performance in your app, pass a function
