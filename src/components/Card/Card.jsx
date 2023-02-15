@@ -1,8 +1,8 @@
 import React from "react";
-import './card.css';
-import {ReactComponent as Heart} from '../assets/heart3.svg'; //импортируем реакт компонент, делаем его кастомным тегом
-import comment from '../assets/comment.svg';
-import star from '../assets/star.svg';
+import './index.css';
+import {ReactComponent as Heart} from '../Assets/heart3.svg'; //импортируем реакт компонент, делаем его кастомным тегом
+import comment from '../Assets/comment.svg';
+import star from '../Assets/star.svg';
 import cn from 'classnames';
 
 

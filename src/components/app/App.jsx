@@ -1,11 +1,11 @@
 
 import React, { useEffect, useState } from 'react';
-import './App.css';
+import './index.css';
 import  {Footer}  from '../Footer/footer.jsx';
 import  {Header}  from '../Header/header.jsx';
-import CardList from '../cardList/CardList.jsx';
-import api from '../utilites/api';
-import SearchInfo from '../SearchInfo/index.jsx';
+import CardList from '../CardList/cardList.jsx';
+import api from '../Utilites/api';
+import SearchInfo from '../SearchInfo/searchInfo.jsx';
 
 
 

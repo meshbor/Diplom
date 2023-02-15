@@ -1,9 +1,7 @@
-import { Header } from "../header/header";
 import React, { useEffect, useState } from 'react';
-import Spinner from "../spinner/Spinner";
-import { Footer } from "../footer/footer";
-import api from "../utilites/api";
-import { Post } from "../post/Post";
+import Spinner from "../Spinner/spinner";
+import api from "../Utilites/api";
+import { Post } from "../Post/post";
 export const PostPage = ()=>{
    const postId ='63d5121b59b98b038f77ad98' ;
     const [cards, setCards]=useState([]);

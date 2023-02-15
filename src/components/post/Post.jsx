@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import s from '../post/post.module.css'
+import s from '../Post/index.module.css'
 
 export const Post = ({image, title, text, author})=>{
 const authorPost = author.name;// ввел переменную - взял значение объекта 'author',
