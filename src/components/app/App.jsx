@@ -1,10 +1,13 @@
 
 import React, { useEffect, useState } from 'react';
-import './App.css';
-import  {Footer}  from '../footer/footer.jsx';
-import  {Header}  from '../header/header.jsx';
-import CardList from '../cardList/CardList.jsx';
-import api from '../utilites/api';
+import './index.css';
+import  {Footer}  from '../Footer/footer.jsx';
+import  {Header}  from '../Header/header.jsx';
+import CardList from '../CardList/cardList.jsx';
+import api from '../Utilites/api';
+import { CollectionPage } from '../page/Collection/collection';
+import { PostPage } from '../page/PostPage/postPage';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
 
@@ -47,7 +50,18 @@ function headlyPostLike(posts){
    <div className='content_carts'>
      <div className="App">
        <Header user={currentUser} onUpdateUser={handleUpdateUser} />
-       <CardList goodData={cards} currentUser ={currentUser} onPostsLike={headlyPostLike} /> 
+
+       <Routes>
+        <Route path ='/' element = {
+          <CollectionPage cards = {cards}  currentUser={currentUser} headlyPostLike ={headlyPostLike} />
+         }
+        > </Route>
+
+        <Route path='/v2/group-9/posts' element = {<PostPage/>}></Route>
+
+       </Routes>
+       
+       
        <Footer />
      </div>
     </div>

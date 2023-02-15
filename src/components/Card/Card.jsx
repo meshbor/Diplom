@@ -1,12 +1,20 @@
 import React from "react";
-import './card.css';
-import {ReactComponent as Heart} from '../assets/heart3.svg'; //импортируем реакт компонент, делаем его кастомным тегом
-import comment from '../assets/comment.svg';
-import star from '../assets/star.svg';
+import './index.css';
+import {ReactComponent as Heart} from '../Assets/heart3.svg'; //импортируем реакт компонент, делаем его кастомным тегом
+import comment from '../Assets/comment.svg';
+import star from '../Assets/star.svg';
 import cn from 'classnames';
+import { Link } from "react-router-dom";
 
 
-const Card=({title,image,likes,currentUser,onPostsLike,_id})=>{ //в скобочках - указываем нужные пропсы, которые прокинули в кардлисте
+const Card=({title,
+    image,
+    likes,
+    currentUser,
+    onPostsLike,
+    _id,
+    comments
+})=>{ //в скобочках - указываем нужные пропсы, которые прокинули в кардлисте
 
 // function headlyLikeClick(){
 
@@ -14,9 +22,10 @@ const Card=({title,image,likes,currentUser,onPostsLike,_id})=>{ //в скобо�
 // }
 const liked = likes.some((id)=> id=== currentUser?._id); //проверяем не является ли пользователь (id) элементом массива лайков данного поста
 const likesLength = `${likes.length}`;
+const commentsCount = `${comments.length}`;
 return(
 <div className="card">
-    <a href="/v2/group-9/posts" className="card_link">
+    <Link to={`/v2/group-9/posts/`} className="card_link">
 
         
 
@@ -27,7 +36,7 @@ return(
         
 
         </div>
-    </a>
+    </Link>
     <div className="card_bottom_menu">
 
         <div className="card_styky_bottom">
@@ -51,7 +60,7 @@ return(
         </a>
     </div>
     <div className="card_counter_comment">
-            <span>0</span>
+            <span>{commentsCount}</span>
         </div>
     <div className="card_rating">
         

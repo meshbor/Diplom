@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from '../src/components/app/App';
+import App from './components/App/app';
 import reportWebVitals from './reportWebVitals';
-import { PostPage } from './components/page/postPage';
+import { PostPage } from './components/page/PostPage/postPage';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <App/>
+  <BrowserRouter>
+  <App />
+</BrowserRouter>
 //  <PostPage/>
 );
 

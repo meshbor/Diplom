@@ -1,5 +1,5 @@
-import './cardList.css';
-import Card from '../Card/Card'
+import './index.css';
+import Card from '../Card/card'
 
 
 const CardList = ({goodData, currentUser, onPostsLike}) => {

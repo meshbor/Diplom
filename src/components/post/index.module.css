@@ -24,3 +24,7 @@
 .imgWrapper {
 	flex: 1;
 }
+.btn {
+    width: 60px;
+	height: 25px
+}

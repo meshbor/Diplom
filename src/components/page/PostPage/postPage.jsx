@@ -1,9 +1,9 @@
-import { Header } from "../header/header";
+
 import React, { useEffect, useState } from 'react';
-import Spinner from "../spinner/Spinner";
-import { Footer } from "../footer/footer";
-import api from "../utilites/api";
-import { Post } from "../post/Post";
+import Spinner from "../../Spinner/spinner";
+import api from "../../Utilites/api";
+import { Post } from "../../Post/post";
+import { useParams } from "react-router-dom";
 export const PostPage = ()=>{
    const postId ='63d5121b59b98b038f77ad98' ;
     const [cards, setCards]=useState([]);
@@ -11,7 +11,8 @@ export const PostPage = ()=>{
     const [ isloading,setIsloading]=useState([false]);
     const [ post,setPost]=useState([null]);
 
-    
+   //  const {postId} = useParams();
+console.log(postId);
 
     useEffect(()=>{
 setIsloading(true);
@@ -23,6 +24,10 @@ api // делаем запрос
 .finally(()=>setIsloading(false));//это позволяет отключить спиннер, после любого ответа сервера на наш запрос (ошибка. не ошибка - не важно)
  
 },[postId]);
+
+
+
+
    return (
    <>
    
