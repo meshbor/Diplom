@@ -5,8 +5,8 @@ import  {Footer}  from '../Footer/footer.jsx';
 import  {Header}  from '../Header/header.jsx';
 import CardList from '../CardList/cardList.jsx';
 import api from '../Utilites/api';
-import { CollectionPage } from '../page/Collection/collection';
-import { PostPage } from '../page/PostPage/postPage';
+import { CollectionPage } from '../Page/Collection/collection';
+import { PostPage } from '../Page/PostPage/postPage';
 import { Route, Routes } from 'react-router-dom';
 
 function App() {
