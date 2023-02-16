@@ -1,0 +1,30 @@
+.container {
+	max-width: 1024px;
+	padding-left: 16px;
+	padding-right: 16px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.product {
+	display: flex;
+	margin-top: 23px;
+	gap: 100px;
+	margin-bottom: 40px;
+}
+
+.postTitle {
+	margin-top: 0;
+	font-weight: 800;
+	font-size: 28px;
+	line-height: 32px;
+	margin-bottom: 4px;
+}
+
+.imgWrapper {
+	flex: 1;
+}
+.btn {
+    width: 60px;
+	height: 25px
+}

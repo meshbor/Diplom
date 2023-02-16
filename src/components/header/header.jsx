@@ -1,6 +1,6 @@
 import React from "react";
 import './index.css';
-import logo from '../assets/logo.svg';
+import logo from '../Assets/logo.svg';
 import Search from "../Search/search";
 
 export function Header(props) {
