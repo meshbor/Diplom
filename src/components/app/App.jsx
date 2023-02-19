@@ -5,6 +5,10 @@ import  {Footer}  from '../Footer/footer.jsx';
 import  {Header}  from '../Header/header.jsx';
 import CardList from '../CardList/cardList.jsx';
 import api from '../Utilites/api';
+
+import { CollectionPage } from '../Page/Collection/collection';
+import { PostPage } from '../Page/PostPage/postPage';
+
 import SearchInfo from '../SearchInfo/searchInfo.jsx';
 
 
@@ -68,6 +72,27 @@ function headlyPostLike(posts){
  }, [searchQuery])
   return ( 
   <div className='content_container'>
+
+   <div className='content_carts'>
+     <div className="App">
+       <Header user={currentUser} onUpdateUser={handleUpdateUser} />
+
+       <Routes>
+        <Route path ='/' element = {
+          <CollectionPage cards = {cards}  currentUser={currentUser} headlyPostLike ={headlyPostLike} />
+         }
+        > </Route>
+
+        <Route path='/v2/group-9/posts' element = {<PostPage/>}></Route>
+
+       </Routes>
+       
+       
+       <Footer />
+     </div>
+    </div>
+  </div>)
+
   <div className='content_carts'>
   <div className='App'>
   <Header user={currentUser} onUpdateUser={handleUpdateUser} /> 
@@ -81,6 +106,7 @@ function headlyPostLike(posts){
   </div>
  </div>
  </div>)
+
 }
 
 export default App;
