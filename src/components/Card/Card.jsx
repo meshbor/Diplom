@@ -59,7 +59,7 @@ return(
             
         </a>
     </div>
-    <div className="card_counter_comment">
+   <div className="card_counter_comment">
             <span>{commentsCount}</span>
         </div>
     <div className="card_rating">
