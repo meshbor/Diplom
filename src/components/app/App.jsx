@@ -5,16 +5,22 @@ import  {Footer}  from '../Footer/footer.jsx';
 import  {Header}  from '../Header/header.jsx';
 import CardList from '../CardList/cardList.jsx';
 import api from '../Utilites/api';
+
 import { CollectionPage } from '../Page/Collection/collection';
 import { PostPage } from '../Page/PostPage/postPage';
-import { Route, Routes } from 'react-router-dom';
+
+import SearchInfo from '../SearchInfo/searchInfo.jsx';
+
+
 
 function App() {
 
 
     const [cards, setCards]=useState([]);
+
     const [currentUser,setCurrentUser]=useState([null]);
     const [searchQuery, setSearchQuery] = useState('');
+
 
 
  useEffect(()=>{
@@ -50,8 +56,8 @@ function headlyPostLike(posts){
   const liked = liked.some(id=> id=== currentUser?._id);
   api.changeLikePosts(posts._id, liked).then((newCard)=>{
    const newPost = cards.map((cardState)=>{
-    // console.log('карточка из стейта', cardState);
-    // console.log('карточка из сервера', newCard);
+     console.log('карточка из стейта', cardState);
+     console.log('карточка из сервера', newCard);
    })
   })
  }
@@ -60,12 +66,13 @@ function headlyPostLike(posts){
  }
  useEffect(() => {
   const filteredCards = cards.filter((item) =>
-  item.name.includes(searchQuery)
+  item.name.includes.toUpperCase()(searchQuery.toUpperCase())
   );
   setCards([...filteredCards])
  }, [searchQuery])
   return ( 
   <div className='content_container'>
+
    <div className='content_carts'>
      <div className="App">
        <Header user={currentUser} onUpdateUser={handleUpdateUser} />
@@ -85,6 +92,21 @@ function headlyPostLike(posts){
      </div>
     </div>
   </div>)
+
+  <div className='content_carts'>
+  <div className='App'>
+  <Header user={currentUser} onUpdateUser={handleUpdateUser} /> 
+  <main className='content container'>
+  <SearchInfo searchText={searchQuery} searchCount = {cards.length}/>
+  <div>
+    <CardList  goodData={cards} currentUser ={currentUser} onPostsLike={headlyPostLike}/>
+  </div>
+    </main>
+    <Footer />
+  </div>
+ </div>
+ </div>)
+
 }
 
 export default App;

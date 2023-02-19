@@ -2,7 +2,9 @@
 	display: flex;
     justify-content: space-between;
 	width: 100%;
-    background-color:black;
+
+    background-color: #000000;
+
     padding: 20px 0;
 		
 }
@@ -20,8 +22,9 @@
 	}
 
 .logo {
-	width: 200px;
-	height: 200px;
+	width: 600px;
+	height: 80px;
+
 	fill: black;
 	padding-left: 50px;
 }
