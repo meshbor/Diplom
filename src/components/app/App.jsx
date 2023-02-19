@@ -16,6 +16,7 @@ function App() {
     const [currentUser,setCurrentUser]=useState([null])
 
 
+
  useEffect(()=>{
    Promise.all([api.getPostList(),api.getUserInfo() ]).then(([dataPosts, dataUser])=>{ // промис.олл - не пропустит компиляцию, пока не выполнятся условия
      setCards(dataPosts);
@@ -49,15 +50,16 @@ function headlyPostLike(posts){
   <div className='content_container'>
    <div className='content_carts'>
      <div className="App">
-       <Header user={currentUser} onUpdateUser={handleUpdateUser} />
+   
+        <Header user={currentUser} onUpdateUser={handleUpdateUser} />
 
        <Routes>
         <Route path ='/' element = {
           <CollectionPage cards = {cards}  currentUser={currentUser} headlyPostLike ={headlyPostLike} />
-         }
+        }
         > </Route>
 
-        <Route path='/v2/group-9/posts' element = {<PostPage/>}></Route>
+        <Route path='post/:postId' element = {<PostPage currentUser={currentUser}/>}></Route>
 
        </Routes>
        

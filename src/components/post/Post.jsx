@@ -13,7 +13,7 @@ let navigate = useNavigate(); //хук для того чтобы при наж�
 const handleClick=()=>{
 navigate('/');
 };
-
+const textHTML = {__html:text};
 const location = useLocation();
 
 // useEffect(()=>{
@@ -33,7 +33,8 @@ const location = useLocation();
    <div>
       <span> РЕЦЕПТ</span>
    </div>
-   <h2 className="recept">{text}</h2>
+   <p className={s.subtitle} dangerouslySetInnerHTML={textHTML}></p>
+   {/* <h2 className="recept">{text}</h2> */}
    
    <div>
       АВТОР РЕЦЕПТА
