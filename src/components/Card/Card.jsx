@@ -25,9 +25,8 @@ const likesLength = `${likes.length}`;
 const commentsCount = `${comments.length}`;
 return(
 <div className="card">
-    <Link to={`/v2/group-9/posts/post/${_id}`} className="card_link">
 
-        
+    <Link to={`/post/${_id}`} className="card_link">
 
         <div className="card_desc">
 

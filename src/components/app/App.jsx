@@ -61,6 +61,7 @@ function App() {
     };
   
 
+
  useEffect(()=>{
    Promise.all([api.getPostList(),api.getUserInfo() ]).then(([dataPosts, dataUser])=>{ // промис.олл - не пропустит компиляцию, пока не выполнятся условия
      setCards(dataPosts);
@@ -95,6 +96,7 @@ function headlyPostLike(posts){
    <div className='content_carts'>
      <div className="App">
    
+
          <Header user={currentUser} onUpdateUser={handleUpdateUser}>
          <>
         <Routes>
@@ -121,7 +123,7 @@ function headlyPostLike(posts){
         > </Route>
 
         <Route path='post/:postId' element = {<PostPage currentUser={currentUser}/>}></Route>
-      
+
        </Routes>
        
        
