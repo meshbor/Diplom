@@ -1,26 +1,18 @@
-
 import React, { useEffect, useState } from 'react';
 import './index.css';
 import  {Footer}  from '../Footer/footer.jsx';
 import  {Header}  from '../Header/header.jsx';
 import CardList from '../CardList/cardList.jsx';
 import api from '../Utilites/api';
-
 import { CollectionPage } from '../Page/Collection/collection';
 import { PostPage } from '../Page/PostPage/postPage';
-
-import SearchInfo from '../SearchInfo/searchInfo.jsx';
-
-
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
 
 
     const [cards, setCards]=useState([]);
-
-    const [currentUser,setCurrentUser]=useState([null]);
-    const [searchQuery, setSearchQuery] = useState('');
-
+    const [currentUser,setCurrentUser]=useState([null])
 
 
  useEffect(()=>{
@@ -52,38 +44,20 @@ function headlyPostLike(posts){
 }
 
  
-function headlyPostLike(posts){
-  const liked = liked.some(id=> id=== currentUser?._id);
-  api.changeLikePosts(posts._id, liked).then((newCard)=>{
-   const newPost = cards.map((cardState)=>{
-     console.log('карточка из стейта', cardState);
-     console.log('карточка из сервера', newCard);
-   })
-  })
- }
- const handleInput = (e)=> {
-  setSearchQuery(e.target.value)
- }
- useEffect(() => {
-  const filteredCards = cards.filter((item) =>
-  item.name.includes.toUpperCase()(searchQuery.toUpperCase())
-  );
-  setCards([...filteredCards])
- }, [searchQuery])
   return ( 
   <div className='content_container'>
-
    <div className='content_carts'>
      <div className="App">
-       <Header user={currentUser} onUpdateUser={handleUpdateUser} />
+   
+        <Header user={currentUser} onUpdateUser={handleUpdateUser} />
 
        <Routes>
         <Route path ='/' element = {
           <CollectionPage cards = {cards}  currentUser={currentUser} headlyPostLike ={headlyPostLike} />
-         }
+        }
         > </Route>
 
-        <Route path='/v2/group-9/posts' element = {<PostPage/>}></Route>
+        <Route path='post/:postId' element = {<PostPage currentUser={currentUser}/>}></Route>
 
        </Routes>
        
@@ -92,21 +66,6 @@ function headlyPostLike(posts){
      </div>
     </div>
   </div>)
-
-  <div className='content_carts'>
-  <div className='App'>
-  <Header user={currentUser} onUpdateUser={handleUpdateUser} /> 
-  <main className='content container'>
-  <SearchInfo searchText={searchQuery} searchCount = {cards.length}/>
-  <div>
-    <CardList  goodData={cards} currentUser ={currentUser} onPostsLike={headlyPostLike}/>
-  </div>
-    </main>
-    <Footer />
-  </div>
- </div>
- </div>)
-
 }
 
 export default App;

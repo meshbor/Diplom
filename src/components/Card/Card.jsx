@@ -4,7 +4,6 @@ import {ReactComponent as Heart} from '../Assets/heart3.svg'; //импортир
 import comment from '../Assets/comment.svg';
 import star from '../Assets/star.svg';
 import cn from 'classnames';
-
 import { Link } from "react-router-dom";
 
 
@@ -17,23 +16,16 @@ const Card=({title,
     comments
 })=>{ //в скобочках - указываем нужные пропсы, которые прокинули в кардлисте
 
-
-
-const Card=({title,image,likes,currentUser,onPostsLike,_id})=>{ //в скобочках - указываем нужные пропсы, которые прокинули в кардлисте
-
-
 // function headlyLikeClick(){
 
 //     onPostsLike({_id, likes})
 // }
 const liked = likes.some((id)=> id=== currentUser?._id); //проверяем не является ли пользователь (id) элементом массива лайков данного поста
 const likesLength = `${likes.length}`;
-
 const commentsCount = `${comments.length}`;
-
 return(
 <div className="card">
-    <Link to={`/v2/group-9/posts/`} className="card_link">
+    <Link to={`/v2/group-9/posts/post/${_id}`} className="card_link">
 
         
 

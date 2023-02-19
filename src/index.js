@@ -12,17 +12,6 @@ root.render(
   <App />
 </BrowserRouter>
 
-import App from '../src/components/App/app';
-import reportWebVitals from './reportWebVitals';
-import { createRootApp } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import { PostPage } from './components/page/postPage';
-
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <App/>
-
 //  <PostPage/>
 );
 
