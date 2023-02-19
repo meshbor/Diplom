@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Spinner from "../../Spinner/spinner";
 import api from "../../Utilites/api";
-import { Post } from "../../Post/post";
+import { Post } from "../../Post/Post";
 import { useParams } from "react-router-dom";
 export const PostPage = ()=>{
    // const postId ='63d5121b59b98b038f77ad98' ;

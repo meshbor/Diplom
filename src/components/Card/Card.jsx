@@ -25,9 +25,8 @@ const likesLength = `${likes.length}`;
 const commentsCount = `${comments.length}`;
 return(
 <div className="card">
-    <Link to={`/post/${_id}`} className="card_link">
 
-        
+    <Link to={`/post/${_id}`} className="card_link">
 
         <div className="card_desc">
 
@@ -59,7 +58,7 @@ return(
             
         </a>
     </div>
-    <div className="card_counter_comment">
+   <div className="card_counter_comment">
             <span>{commentsCount}</span>
         </div>
     <div className="card_rating">

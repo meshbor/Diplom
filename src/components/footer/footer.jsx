@@ -30,10 +30,9 @@ export function Footer(params) {
 
         <div className="bottom"> 
       
-        <a className="logo" title="Логотип">
+        <a href="/" title="Логотип">
              <img src={logo} alt="Логотоп" className="logo"/>
             </a>
-        <h1> " 2023 Кухня выходного дня"</h1>
   
         </div>
 
