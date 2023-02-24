@@ -7,8 +7,8 @@ import { CollectionPage } from '../Page/Collection/collection';
 import { PostPage } from '../Page/PostPage/postPage';
 import { Route, Routes } from 'react-router-dom';
 import Search from '../Search/search';
-import Sort from '../Sort/sort';
 import SearchInfo from '../SearchInfo/searchInfo';
+
 
 const useDebounce = (value, delay) => {
   const [debounceValue, setDebounceValue] = useState(value);
@@ -35,8 +35,8 @@ function App() {
     const debounceSearchQuery = useDebounce(searchQuery, 2500);
 
     const handleRequest = () => {
-       const filterCards = cards.filter((item) =>
-         item.name.toUpperCase().includes(searchQuery.toUpperCase())
+      const filterCards = cards.filter((item) =>
+        item.name.toUpperCase().includes(searchQuery.toUpperCase())
        );
        setCards(filterCards);
   
