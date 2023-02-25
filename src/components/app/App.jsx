@@ -9,6 +9,9 @@ import { Route, Routes } from 'react-router-dom';
 import Search from '../Search/search';
 import Sort from '../Sort/sort';
 import SearchInfo from '../SearchInfo/searchInfo';
+import { NoMatchFound } from '../Page/NoMatchFound/noMatchFound';
+import { UserContext } from '../../context/userContext';
+import { CardContext } from '../../context/cardContext';
 
 const useDebounce = (value, delay) => {
   const [debounceValue, setDebounceValue] = useState(value);
@@ -80,7 +83,7 @@ function headlyPostLike(posts){
  const liked = posts.likes.some(id=> id=== currentUser?._id); //проверяем , залайкан ли этот пост этим пользователем
  console.log(liked);
  api.changeLikePosts(posts._id, liked).then((newCard)=>{ // посылаем апи-запрос серверу с айди 
-  //пользователя и информацией залайкан пост или нет. получаем новую карточку огт сервера
+  //пользователя и информацией залайкан пост или нет. получаем новую карточку от сервера
   const newPost = cards.map((cardState)=>{
     console.log('карточка из стейта', cardState);
     console.log('карточка из сервера', newCard);
@@ -91,15 +94,18 @@ function headlyPostLike(posts){
 }
 
  
-  return ( 
-  <div className='content_container'>
-   <div className='content_carts'>
-     <div className="App">
+  return (
+    <>
+    <CardContext.Provider value={{cards: cards}}>
+    <UserContext.Provider value={{currentUser:currentUser} }>
+      <div className='content_container'>
+       <div className='content_carts'>
+         <div className="App">
    
-
+          
          <Header user={currentUser} onUpdateUser={handleUpdateUser}>
          <>
-        <Routes>
+              <Routes>
                 <Route
                   path='/'
                   element={
@@ -113,24 +119,31 @@ function headlyPostLike(posts){
                   <SearchInfo searchCount={cards.length} searchText={searchQuery} />
                 </Route>
               </Routes>
-              </>
-          </Header>
+        </>
+           </Header>
    
-       <Routes>
-        <Route path ='/' element = {
-          <CollectionPage cards = {cards}  currentUser={currentUser} headlyPostLike ={headlyPostLike} />
-        }
-        > </Route>
+           <Routes>
+           <Route path ='/' element = {
+           <CollectionPage   currentUser={currentUser} headlyPostLike ={headlyPostLike} />
+            }
+            > </Route>
 
-        <Route path='post/:postId' element = {<PostPage currentUser={currentUser}/>}></Route>
+           <Route path='post/:postId' element = {<PostPage currentUser={currentUser}/>}></Route>
+           <Route path='*' element={<NoMatchFound/>}></Route>
 
-       </Routes>
+           </Routes>
        
        
-       <Footer />
-     </div>
-    </div>
-  </div>)
+           <Footer />
+       
+          </div>
+        </div>
+      </div>
+   </UserContext.Provider>
+   </CardContext.Provider>
+   </>
+  )
+  
 }
 
 export default App;

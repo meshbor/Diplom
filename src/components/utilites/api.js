@@ -13,6 +13,10 @@ getPostList(){  // делаем запрос на сервер на получе
         return result; // обязательно ретерним результат
       });
 }
+getPostListLimit(page, limit){
+    return fetch(`https://api.react-learning.ru/v2/group-9/posts/paginate?page=${page}&limit=${limit}`).then(onResponse)
+}
+
 search(searchQuery) {
 
     return fetch(`${this._baseUrl}/v2/group-9/posts/search?query=${searchQuery}`, {
@@ -27,11 +31,11 @@ getUserInfo(){  // делаем запрос на сервер на получе
       });
 };
 
-changeLikePosts(postId, isLike) {
+changeLikePosts(postId, isLiked) {
 
     return fetch(`${this._baseUrl}/v2/group-9/posts/likes/${postId}`,
     {headers: this._headers,
-        method: isLike ? 'DELETE' : 'PUT',
+        method: isLiked? 'DELETE' : 'PUT',
     }).then(onResponse).then((result) => {
         // console.log(result);
         return result;
