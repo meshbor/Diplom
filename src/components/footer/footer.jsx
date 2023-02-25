@@ -1,6 +1,9 @@
 import React from "react";
 import './index.css';
 import logo from '../Assets/logo.svg';
+import telegram from "./img/telegram.svg";
+import viber from "./img/viber.svg";
+import vk from "./img/vk.svg";
 
 export function Footer(params) {
   return(
@@ -8,10 +11,27 @@ export function Footer(params) {
        
         <div className="top">
 
-         <a href="/">   <div className="social">
-              <h1> Соц. сети</h1>
-              <h3>vkontakte.ru</h3>
-              <h3>telegramm</h3>   
+         <a href="/">  
+          <div className="social">
+              <h1 className="soc"> Соц. сети</h1>
+              <ul className="socials contacts__socials">
+								<li className="socials__item">
+									<a className="socials__link" href="https://t.me/stMihaile">
+										<img src={telegram} alt="telegram" className="socials__icon"/>
+									</a>
+                  </li>
+								
+								<li className="socials__item">
+									<a className="socials__link" href="https://skobelkin.ru/viber/9379935153">
+										<img src={viber} alt="viber" className="socials__icon"/>
+									</a>
+								</li>
+									<li className="socials__item">
+									<a className="socials__link" href="https://vk.com/sipatrov_m">
+										<img src={vk} alt="vk" className="socials__icon"/>
+									</a>
+								</li>
+							</ul> 
             </div></a>
 
             <a href="/">  <div className="contact">
