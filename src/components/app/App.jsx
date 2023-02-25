@@ -5,9 +5,12 @@ import  {Header}  from '../Header/header.jsx';
 import api from '../Utilites/api';
 import { CollectionPage } from '../Page/Collection/collection';
 import { PostPage } from '../Page/PostPage/postPage';
-import { Route, Routes } from 'react-router-dom';
+import {Route, Routes } from 'react-router-dom';
 import Search from '../Search/search';
 import SearchInfo from '../SearchInfo/searchInfo';
+import { Form } from '../Form/form';
+import { RegistrationForm } from '../Form/registrationForm';
+import { Modal } from '../Form/Modal/modal';
 
 
 const useDebounce = (value, delay) => {
@@ -31,6 +34,9 @@ function App() {
     const [cards, setCards]=useState([]);
     const [searchQuery, setSearchQuery] = useState('');
     const [currentUser,setCurrentUser]=useState([null]);
+    const [contacts, setContacts]=useState([]);
+    const [activeModal, setActiveModal] = useState(false);
+
 
     const debounceSearchQuery = useDebounce(searchQuery, 2500);
 
@@ -46,10 +52,10 @@ function App() {
         .catch((err) => console.log(err));
     };
   
-    useEffect(() => {
-      handleRequest();
-      console.log('INPUT', searchQuery);
-    }, [debounceSearchQuery]);
+    //useEffect(() => {
+     // handleRequest();
+     // console.log('INPUT', searchQuery);
+   // }, [debounceSearchQuery]);
   
     const handleFormSubmit = (e) => {
       e.preventDefault();
@@ -89,7 +95,9 @@ function headlyPostLike(posts){
   setCards(newPost)
  })
 }
-
+const addContact = (contact) => {
+  setContacts([... contacts, contact])
+};
  
   return ( 
   <div className='content_container'>
@@ -123,10 +131,23 @@ function headlyPostLike(posts){
         > </Route>
 
         <Route path='post/:postId' element = {<PostPage currentUser={currentUser}/>}></Route>
-
+        <Route path='form' element = {<Form addContact = {addContact} />}></Route>
        </Routes>
-       
-       
+       <div>
+       {contacts.length && contacts.map((el) => (
+       <div>
+       <p>{el.lastName}</p>
+       <p>{el.name}</p>
+       <p>{el.phoneNumber}</p>
+
+       </div> 
+       ))}
+       </div>
+       <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
+              <div style={{ width: '300px', height: '300px' }}>
+                <RegistrationForm addContact={addContact} />
+              </div>
+            </Modal>
        <Footer />
      </div>
     </div>

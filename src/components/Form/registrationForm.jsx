@@ -2,9 +2,7 @@ import s from './index.module.css';
 import { useForm } from 'react-hook-form';
 
 const handleSubmit = (onSubmit) => {
-  ////asdfsadff /
-  // data
-  // onSubmit(data)
+  
 };
 
 export const RegistrationForm = () => {
