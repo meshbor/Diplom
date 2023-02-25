@@ -8,6 +8,9 @@ import { PostPage } from '../Page/PostPage/postPage';
 import {Route, Routes } from 'react-router-dom';
 import Search from '../Search/search';
 import SearchInfo from '../SearchInfo/searchInfo';
+import { NoMatchFound } from '../Page/NoMatchFound/noMatchFound';
+import { UserContext } from '../../context/userContext';
+import { CardContext } from '../../context/cardContext';
 import { Form } from '../Form/form';
 import { RegistrationForm } from '../Form/registrationForm';
 import { Modal } from '../Form/Modal/modal';
@@ -86,7 +89,7 @@ function headlyPostLike(posts){
  const liked = posts.likes.some(id=> id=== currentUser?._id); //проверяем , залайкан ли этот пост этим пользователем
  console.log(liked);
  api.changeLikePosts(posts._id, liked).then((newCard)=>{ // посылаем апи-запрос серверу с айди 
-  //пользователя и информацией залайкан пост или нет. получаем новую карточку огт сервера
+  //пользователя и информацией залайкан пост или нет. получаем новую карточку от сервера
   const newPost = cards.map((cardState)=>{
     console.log('карточка из стейта', cardState);
     console.log('карточка из сервера', newCard);
@@ -99,15 +102,18 @@ const addContact = (contact) => {
   setContacts([... contacts, contact])
 };
  
-  return ( 
-  <div className='content_container'>
-   <div className='content_carts'>
-     <div className="App">
+  return (
+    <>
+    <CardContext.Provider value={{cards: cards}}>
+    <UserContext.Provider value={{currentUser:currentUser} }>
+      <div className='content_container'>
+       <div className='content_carts'>
+         <div className="App">
    
-
+          
          <Header user={currentUser} onUpdateUser={handleUpdateUser}>
          <>
-        <Routes>
+              <Routes>
                 <Route
                   path='/'
                   element={
@@ -121,15 +127,14 @@ const addContact = (contact) => {
                   <SearchInfo searchCount={cards.length} searchText={searchQuery} />
                 </Route>
               </Routes>
-              </>
-          </Header>
+        </>
+           </Header>
    
-       <Routes>
-        <Route path ='/' element = {
-          <CollectionPage cards = {cards}  currentUser={currentUser} headlyPostLike ={headlyPostLike} />
-        }
-        > </Route>
-
+           <Routes>
+           <Route path ='/' element = {
+           <CollectionPage   currentUser={currentUser} headlyPostLike ={headlyPostLike} />
+            }
+            > </Route>
         <Route path='post/:postId' element = {<PostPage currentUser={currentUser}/>}></Route>
         <Route path='form' element = {<Form addContact = {addContact} />}></Route>
        </Routes>
@@ -152,6 +157,10 @@ const addContact = (contact) => {
      </div>
     </div>
   </div>)
+ </UserContext.Provider>
+   </CardContext.Provider>
+   </>
+  )
 }
 
 export default App;

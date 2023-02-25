@@ -4,6 +4,8 @@ import Spinner from "../../Spinner/spinner";
 import api from "../../Utilites/api";
 import { Post } from "../../Post/post";
 import { useParams } from "react-router-dom";
+import { useContext } from 'react';
+import { UserContext } from '../../../context/userContext';
 export const PostPage = ()=>{
    // const postId ='63d5121b59b98b038f77ad98' ;
     const [cards, setCards]=useState([]);
@@ -12,8 +14,12 @@ export const PostPage = ()=>{
     const [ post,setPost]=useState([null]);
 
     const {postId} = useParams();
+    const {headlyPostLike} = useContext(UserContext);
 console.log(postId);
 
+const onPostsLike=()=>{
+   headlyPostLike(post)
+};
     useEffect(()=>{
 setIsloading(true);
 api.getUserInfo().then((userData)=>setCurrentUser(userData)) ; 
@@ -38,7 +44,9 @@ api // делаем запрос
          <div className="content_carts">
           
           {
-            isloading? (<Spinner/>) : (<Post {...post} currentUser ={currentUser}/>)
+            isloading? (<Spinner/>) : (<Post {...post}
+                currentUser ={currentUser} 
+                onPostsLike={onPostsLike}/>)
           }
           
          </div>
