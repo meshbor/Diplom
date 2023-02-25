@@ -1,5 +1,5 @@
 import './index.css';
-import Card from '../Card/card'
+import Card from '../Card/Card'
 import { useContext } from 'react';
 import { CardContext } from '../../context/cardContext';
 

@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import CardList from '../../CardList/cardList';
+import CardList from '../../CardList/CardList';
 import { Paginator } from '../../Paginator/paginator';
 import api from '../../Utilites/api';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './components/App/app.jsx';
+import App from './components/App/App.jsx';
 import reportWebVitals from './reportWebVitals';
 import { PostPage } from './components/Page/PostPage/postPage.jsx';
 import { BrowserRouter } from 'react-router-dom';
