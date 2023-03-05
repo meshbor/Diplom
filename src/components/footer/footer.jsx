@@ -1,6 +1,6 @@
 import React from "react";
 import './index.css';
-import logo from '../Assets/logo.svg';
+import logo from '../Assets/logo5.svg';
 import telegram from "./img/telegram.svg";
 import viber from "./img/viber.svg";
 import vk from "./img/vk.svg";
@@ -11,7 +11,7 @@ export function Footer(params) {
        
         <div className="top">
 
-         <a href="/">  
+
           <div className="social">
               <h1 className="soc"> Соц. сети</h1>
               <ul className="socials contacts__socials">
@@ -32,19 +32,19 @@ export function Footer(params) {
 									</a>
 								</li>
 							</ul> 
-            </div></a>
+            </div>
 
-            <a href="/">  <div className="contact">
+           <div className="contact">
               <h1> Контакты</h1>
               <h3> тел: +79999999999</h3>
               <h3> email: ... @mail.ru</h3>
-            </div></a>
+            </div>
 
-            <a href="/"> <div className="faq"> 
+            <div className="faq"> 
               <h2> Часто задаваемые</h2>
               <h2> вопросы</h2>
               <h3> FAQ </h3>
-            </div></a>
+            </div>
 
         </div>
 
@@ -52,6 +52,7 @@ export function Footer(params) {
       
         <a href="/" title="Логотип">
              <img src={logo} alt="Логотоп" className="logo"/>
+             <h1>Кухня выходного дня</h1>
             </a>
   
         </div>
