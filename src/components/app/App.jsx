@@ -45,7 +45,6 @@ function App() {
       })
       .catch((err) => console.log(err));
   };
-
   useEffect(() => {
     handleRequest();
     console.log("INPUT", searchQuery);
