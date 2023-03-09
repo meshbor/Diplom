@@ -37,14 +37,6 @@ function App() {
   const debounceSearchQuery = useDebounce(searchQuery, 2500);
 
   const handleRequest = () => {
-    // console.log(cards);
-    // const filterCards = cards.filter((item) =>
-    //   item?.text.toUpperCase().includes(searchQuery.toUpperCase())
-    // );
-    // console.log({ filterCards });
-    // setCards(filterCards);
-    // console.log('after filter',cards, filterCards);
-
     api
       .search(searchQuery)
       .then((res) => {
