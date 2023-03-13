@@ -6,6 +6,7 @@ const handleSubmit = (onSubmit) => {
 };
 
 export const RegistrationForm = () => {
+  
   const { register, handleSubmit, formState: {errors} } = useForm({mode: 'onSubmit'});
   const onSubmit = (data) => {
     console.log(data);

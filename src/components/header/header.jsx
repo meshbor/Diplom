@@ -11,8 +11,11 @@ export function Header(props) {
             <a href="/" title="Логотип">
              <img src={logo} alt="Логотоп" className="logo"/>
             </a>
+
+
         <Search onInput = {props.changeInput}/>
        
+
        <div> 
           <button className="log_btn"> Вход </button>
           <button className="reg_btn"> Регистрация </button>
