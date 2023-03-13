@@ -6,9 +6,6 @@ import api from '../Utilites/api';
 import { CollectionPage } from '../Page/Collection/collection';
 import { PostPage } from '../Page/PostPage/postPage';
 import {Route, Routes } from 'react-router-dom';
-import Search from '../Search/search';
-import SearchInfo from '../SearchInfo/searchInfo';
-import { NoMatchFound } from '../Page/NoMatchFound/noMatchFound';
 import { UserContext } from '../../context/userContext';
 import { CardContext } from '../../context/cardContext';
 import { Form } from '../Form/form';
@@ -16,6 +13,8 @@ import { RegistrationForm } from '../Form/registrationForm';
 import { Modal } from '../Form/Modal/modal';
 import { SubHeader } from '../SubHeader/subHeader';
 import { FormPost } from '../FormPost/formPost';
+import  SearchInfo from '../SearchInfo/searchInfo.jsx';
+
 
 
 const useDebounce = (value, delay) => {
@@ -58,9 +57,9 @@ function App() {
         .catch((err) => console.log(err));
     };
   
-    //useEffect(() => {
-     // handleRequest();
-     // console.log('INPUT', searchQuery);
+   //useEffect(() => {
+    //handleRequest();
+    //console.log('INPUT', searchQuery);
    // }, [debounceSearchQuery]);
   
     const handleFormSubmit = (e) => {
@@ -102,7 +101,7 @@ function headlyPostLike(posts){
  })
 }
 const addContact = (contact) => {
-  setContacts([... contacts, contact])
+  setContacts([...contacts, contact])
 };
 const addPost = (dataPostForm)=>{
   setDataPostForm([...cards, dataPostForm])
@@ -117,9 +116,8 @@ const addPost = (dataPostForm)=>{
        <div className='content_carts'>
          <div className="App">
    
-          
-         <Header user={currentUser} onUpdateUser={handleUpdateUser}>
-         <>
+
+        
               <Routes>
                 <Route
                   path='/'
@@ -138,6 +136,10 @@ const addPost = (dataPostForm)=>{
            </Header>
            
            <SubHeader setActiveModal={setActiveModal} ></SubHeader>
+
+         <Header changeInput={handleInputChange}/>
+         <SearchInfo searchCount={cards.length} searchText={searchQuery} />
+
    
            <Routes>
            <Route path ='/' element = {

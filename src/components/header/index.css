@@ -1,11 +1,9 @@
 .header {
 	display: flex;
     justify-content: space-between;
-	width: 100%;
-
-    background-color: #000000;
-
-    padding: 20px 0;
+	background-image: url("/public/steik-miaso-ovoshchi-ogon-gril-crop.jpeg");
+	background-size: 100% 100%;
+    padding: 40px 0;
 		
 }
 
@@ -14,16 +12,9 @@
 	width: 60px;
 	height: 25px;
 }
-.search__input {
-
-	width: 500px;
-	height: 20px;
-	background-color: antiquewhite;
-	}
-
 .logo {
-	width: 600px;
-	height: 80px;
+	width: 200px;
+	height: 100px;
 
 	fill: black;
 	padding-left: 50px;

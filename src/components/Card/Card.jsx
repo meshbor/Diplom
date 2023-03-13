@@ -5,7 +5,8 @@ import comment from '../Assets/comment.svg';
 import star from '../Assets/star.svg';
 import cn from 'classnames';
 import { Link } from "react-router-dom";
-import {UserContext} from '../../context/userContext'
+
+import {UserContext} from '../../context/userContext';
 
 const Card=({title,
     image,
