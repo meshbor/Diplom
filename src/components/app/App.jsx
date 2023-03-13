@@ -42,10 +42,7 @@ function App() {
     const debounceSearchQuery = useDebounce(searchQuery, 2500);
 
     const handleRequest = () => {
-      const filterCards = cards.filter((item) =>
-        item.name.toUpperCase().includes(searchQuery.toUpperCase())
-       );
-       setCards(filterCards);
+      
   
       api
         .search(searchQuery)
@@ -53,10 +50,10 @@ function App() {
         .catch((err) => console.log(err));
     };
   
-   //useEffect(() => {
-    //handleRequest();
-    //console.log('INPUT', searchQuery);
-   // }, [debounceSearchQuery]);
+   useEffect(() => {
+    handleRequest();
+    console.log('INPUT', searchQuery);
+    }, [debounceSearchQuery]);
   
     const handleFormSubmit = (e) => {
       e.preventDefault();
