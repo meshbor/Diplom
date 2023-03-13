@@ -11,7 +11,10 @@ import { CardContext } from '../../context/cardContext';
 import { Form } from '../Form/form';
 import { RegistrationForm } from '../Form/registrationForm';
 import { Modal } from '../Form/Modal/modal';
+import { SubHeader } from '../SubHeader/subHeader';
+import { FormPost } from '../FormPost/formPost';
 import  SearchInfo from '../SearchInfo/searchInfo.jsx';
+
 
 
 const useDebounce = (value, delay) => {
@@ -37,6 +40,7 @@ function App() {
     const [currentUser,setCurrentUser]=useState([null]);
     const [contacts, setContacts]=useState([]);
     const [activeModal, setActiveModal] = useState(false);
+    const [dataPostForm, setDataPostForm] = useState([]);
 
 
     const debounceSearchQuery = useDebounce(searchQuery, 2500);
@@ -69,7 +73,7 @@ function App() {
  useEffect(()=>{
    Promise.all([api.getPostList(),api.getUserInfo() ]).then(([dataPosts, dataUser])=>{ // промис.олл - не пропустит компиляцию, пока не выполнятся условия
      setCards(dataPosts);
-    //  console.log(dataPosts);
+     console.log(dataPosts);
      setCurrentUser(dataUser);
    });
  },[]);
@@ -96,26 +100,52 @@ function headlyPostLike(posts){
 const addContact = (contact) => {
   setContacts([...contacts, contact])
 };
+const addPost = (dataPostForm)=>{
+  setDataPostForm([...cards, dataPostForm])
+  console.log();
+}
  
   return (
     <>
-    <CardContext.Provider value={{cards: cards}}>
-    <UserContext.Provider value={{currentUser:currentUser} }>
+    <CardContext.Provider value={{cards: cards, setActiveModal:setActiveModal}}>
+    <UserContext.Provider value={{currentUser:currentUser,  headlyPostLike: headlyPostLike }}>
       <div className='content_container'>
        <div className='content_carts'>
          <div className="App">
    
-          
+
+        
+              <Routes>
+                <Route
+                  path='/'
+                  element={
+                    <Search
+                      onSubmit={handleFormSubmit}
+                      onInput={handleInputChange}
+                    />
+                  }
+                  
+                >
+                  <SearchInfo searchCount={cards.length} searchText={searchQuery} />
+                </Route>
+              </Routes>
+        </>
+           </Header>
+           
+           <SubHeader setActiveModal={setActiveModal} ></SubHeader>
+
          <Header changeInput={handleInputChange}/>
          <SearchInfo searchCount={cards.length} searchText={searchQuery} />
+
    
            <Routes>
            <Route path ='/' element = {
-           <CollectionPage   currentUser={currentUser} headlyPostLike ={headlyPostLike} />
+           <CollectionPage  cards={cards} currentUser={currentUser} headlyPostLike ={headlyPostLike} />
             }
             > </Route>
         <Route path='post/:postId' element = {<PostPage currentUser={currentUser}/>}></Route>
         <Route path='form' element = {<Form addContact = {addContact} />}></Route>
+        <Route path='formPost' element = {<FormPost addPost={addPost} />}></Route>
        </Routes>
        <div>
        {contacts.length && contacts.map((el) => (
@@ -132,6 +162,12 @@ const addContact = (contact) => {
                 <RegistrationForm addContact={addContact} />
               </div>
             </Modal>
+            <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
+              <div style={{ width: '600px', height: '100%' }}>
+                <FormPost addPost={addPost} setActiveModal={setActiveModal} />
+              </div>
+            </Modal>
+
        <Footer />
      </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,10 +6,15 @@ import s from '../Post/index.module.css'
 import Search from '../Search/search';
 import { Route, Routes } from 'react-router-dom';
 import {ReactComponent as Heart} from '../Assets/heart3.svg'
+import {UserContext} from '../../context/userContext'
 
-export const Post = ({image, title, text, author,created_at,likes,currentUser,onPostsLike })=>{
+export const Post = ({image, title, text, author,created_at,likes=[],onPostsLike,_id,currentUser })=>{
   const dataPost = created_at.slice(0,10);
-  const isLiked = likes.some((id) => id === currentUser?._id);
+  const instance = useContext( UserContext )
+  
+  const isLiked = likes.some((id) => id === instance?.currentUser._id);
+  console.log(isLiked);
+ 
 
 const authorPost = author.name;// ввел переменную - взял значение объекта 'author',
 // полученного в ответе сервера по ключу 'name'
@@ -30,6 +35,8 @@ useEffect(()=>{
 
    return (
    <>
+
+   
    <div className={s.container}>
       <div className={s.imgWrapper}>
          <img src={image} alt='#' />
@@ -40,6 +47,7 @@ useEffect(()=>{
    <button className= {cn(s.favorite, {[s.favoriteActiv]: isLiked})}
              onClick={onPostsLike}>
               <Heart  className={s.favoriteIkon}/>
+              
             </button>
   
    <div>

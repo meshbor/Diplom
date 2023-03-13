@@ -46,7 +46,18 @@ getPostsById(idPost) {
         headers: this._headers
     }).then(onResponse)
 }
+
+dataPostForm(body) {
+    return fetch(`${this._baseUrl}/v2/group-9/posts`, 
+    {headers: this._headers,
+        method: 'POST',
+        body: JSON.stringify(body),
+    }).then(onResponse);
 }
+
+}
+
+
 
 
 const config = {
