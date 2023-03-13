@@ -11,14 +11,14 @@ export const PostPage = ()=>{
     const [cards, setCards]=useState([]);
     const [currentUser,setCurrentUser]=useState([null]);
     const [ isloading,setIsloading]=useState([false]);
-    const [ post,setPost]=useState([null]);
+    const [ posts,setPost]=useState([null]);
 
     const {postId} = useParams();
     const {headlyPostLike} = useContext(UserContext);
-console.log(postId);
+// console.log(postId);
 
-const onPostsLike=()=>{
-   headlyPostLike(post)
+const onPostsLike=()=>{ // ловим тут функцию онпостлайк, которая будет проверять залайкан ли пост пользователем
+   headlyPostLike(posts)
 };
     useEffect(()=>{
 setIsloading(true);
@@ -41,10 +41,13 @@ api // делаем запрос
 
       <div className="content_container">
 
+      
+
          <div className="content_carts">
+            
           
           {
-            isloading? (<Spinner/>) : (<Post {...post}
+            isloading? (<Spinner/>) : (<Post {...posts}
                 currentUser ={currentUser} 
                 onPostsLike={onPostsLike}/>)
           }
