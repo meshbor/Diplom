@@ -14,6 +14,7 @@ import { Modal } from '../Form/Modal/modal';
 import { SubHeader } from '../SubHeader/subHeader';
 import { FormPost } from '../FormPost/formPost';
 import  SearchInfo from '../SearchInfo/searchInfo.jsx';
+import Search from '../Search/search';
 
 
 
@@ -114,30 +115,11 @@ const addPost = (dataPostForm)=>{
          <div className="App">
    
 
-        
-              <Routes>
-                <Route
-                  path='/'
-                  element={
-                    <Search
-                      onSubmit={handleFormSubmit}
-                      onInput={handleInputChange}
-                    />
-                  }
-                  
-                >
-                  <SearchInfo searchCount={cards.length} searchText={searchQuery} />
-                </Route>
-              </Routes>
-        </>
-           </Header>
+
            
-           <SubHeader setActiveModal={setActiveModal} ></SubHeader>
-
-         <Header changeInput={handleInputChange}/>
+         <Header changeInput={handleInputChange}/> 
          <SearchInfo searchCount={cards.length} searchText={searchQuery} />
-
-   
+           <SubHeader setActiveModal={setActiveModal} ></SubHeader>
            <Routes>
            <Route path ='/' element = {
            <CollectionPage  cards={cards} currentUser={currentUser} headlyPostLike ={headlyPostLike} />
