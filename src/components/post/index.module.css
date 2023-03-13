@@ -1,0 +1,78 @@
+.container {
+	max-width: 1024px;
+	padding-left: 16px;
+	padding-right: 16px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.product {
+	display: flex;
+	margin-top: 23px;
+	gap: 100px;
+	margin-bottom: 40px;
+}
+
+.postTitle {
+	margin-top: 0;
+	font-weight: 800;
+	font-size: 28px;
+	line-height: 32px;
+	margin-bottom: 4px;
+}
+
+.imgWrapper {
+	flex: 1;
+
+}
+.btn {
+    width: 300px;
+	height: 40px;
+	background-color: black;
+	font-family: sans-serif;
+	font-size: 25px;
+	color: rgb(253, 252, 252);
+	 
+}
+.subtitle {
+	font-size: 16px;
+	line-height: 20px;
+	font-weight: 400;
+	margin-bottom: 40px;
+
+}
+.buttonclick{
+display: flex;
+justify-content: space-evenly;
+
+}
+.favorite{
+	cursor: pointer;
+	background: none;
+	border: none;
+	padding: 0;
+	display: flex;
+
+}
+.favoriteActiv{
+	stroke-width: 0;
+    height: 25px;
+    width: 25px;
+    fill:rgb(140, 31, 184)
+
+}
+.favoriteIkon{
+
+	fill: #FFFFFF;
+	stroke-width: 1px;
+	stroke: black;
+    height: 25px;
+    width: 25px;
+}
+
+.card_styky_bottom{
+	padding: 10px 5px 10px 10px;
+    display: flex;
+    align-items: center;
+
+}
