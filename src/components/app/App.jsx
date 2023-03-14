@@ -14,7 +14,7 @@ import { Modal } from '../Form/Modal/modal';
 import { SubHeader } from '../SubHeader/subHeader';
 import { FormPost } from '../FormPost/formPost';
 import  SearchInfo from '../SearchInfo/searchInfo.jsx';
-import Search from '../Search/search';
+
 
 
 
