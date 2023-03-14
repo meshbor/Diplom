@@ -14,6 +14,7 @@ import { Modal } from '../Form/Modal/modal';
 import { SubHeader } from '../SubHeader/subHeader';
 import { FormPost } from '../FormPost/formPost';
 import  SearchInfo from '../SearchInfo/searchInfo.jsx';
+import Search from '../Search/search';
 
 
 
@@ -46,21 +47,17 @@ function App() {
     const debounceSearchQuery = useDebounce(searchQuery, 2500);
 
     const handleRequest = () => {
-      const filterCards = cards.filter((item) =>
-        item.name.toUpperCase().includes(searchQuery.toUpperCase())
-       );
-       setCards(filterCards);
-  
+     
       api
         .search(searchQuery)
         .then((res) => setCards(res))
         .catch((err) => console.log(err));
     };
   
-   //useEffect(() => {
-    //handleRequest();
-    //console.log('INPUT', searchQuery);
-   // }, [debounceSearchQuery]);
+   useEffect(() => {
+    handleRequest();
+    console.log('INPUT', searchQuery);
+   }, [debounceSearchQuery]);
   
     const handleFormSubmit = (e) => {
       e.preventDefault();
@@ -118,27 +115,13 @@ const addPost = (dataPostForm)=>{
    
 
         
-              <Routes>
-                <Route
-                  path='/'
-                  element={
-                    <Search
-                      onSubmit={handleFormSubmit}
-                      onInput={handleInputChange}
-                    />
-                  }
-                  
-                >
-                  <SearchInfo searchCount={cards.length} searchText={searchQuery} />
-                </Route>
-              </Routes>
-        </>
-           </Header>
+        <Header changeInput={handleInputChange}/>
+        <SearchInfo searchCount={cards.length} searchText={searchQuery} />  
            
            <SubHeader setActiveModal={setActiveModal} ></SubHeader>
 
-         <Header changeInput={handleInputChange}/>
-         <SearchInfo searchCount={cards.length} searchText={searchQuery} />
+         
+         
 
    
            <Routes>

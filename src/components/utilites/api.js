@@ -47,11 +47,13 @@ getPostsById(idPost) {
     }).then(onResponse)
 }
 
-dataPostForm(body) {
+addPostForm(data) {
     return fetch(`${this._baseUrl}/v2/group-9/posts`, 
     {headers: this._headers,
         method: 'POST',
-        body: JSON.stringify(body),
+        body:
+       
+         JSON.stringify(data), // {image:'', title:'',text:''}
     }).then(onResponse);
 }
 
