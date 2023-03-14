@@ -8,52 +8,55 @@ import { CardContext } from '../../context/cardContext';
 import { useForm } from 'react-hook-form';
 
 
-// export const FormPost = ({addPost, setActiveModal})=>{
-// // юзстейт следит за состоянием полей (адресс,имя,рецепт) по средствам функции сетЮзФормПост, которая 
-// // в свою очередь изменяется внутри другой функции хедлиФормИнпут ,котораяреагирует на событие (ввод данных)
-//     const [userFormPost, setUserFormPost]=useState(
-//         {image: '',
-//         title:'',
-//         text: '',
+export const FormPost = ({addPost, setActiveModal})=>{
+// юзстейт следит за состоянием полей (адресс,имя,рецепт) по средствам функции сетЮзФормПост, которая 
+// в свою очередь изменяется внутри другой функции хедлиФормИнпут ,котораяреагирует на событие (ввод данных)
+    const [userFormPost, setUserFormPost]=useState(
+        {image: '',
+        title:'',
+        text: '',
       
-//         }
-//     );
+        }
+    );
 
-//     const hendlyFormInput =(e)=>{
-//      setUserFormPost({...userFormPost,[e.target.name]: e.target.value})// расспредиваем юзерФормПост, и для каждого поля будут записыватьсяновые значения
-//     }
+    const hendlyFormInput =(e)=>{
+     setUserFormPost({...userFormPost,[e.target.name]: e.target.value})// расспредиваем юзерФормПост, и для каждого поля будут записыватьсяновые значения
+    }
 
-//     console.log(userFormPost);//
-//   const hendlyFormSubmit=(e)=>{
-//   e.preventDefault(); // чтобы отменить перезагрузку страницы
+    console.log(userFormPost);//
+  const hendlyFormSubmit=(e)=>{
+  e.preventDefault(); // чтобы отменить перезагрузку страницы
+  api.addPostForm(userFormPost);
+  addPost(userFormPost);
 
-//   addPost(userFormPost);
-
-// }
+}
 const handleSubmit = (onSubmit) => {
   
 };
 
-export const FormPost = ({setActiveModal}) =>{
+// export const FormPost = ({setActiveModal, addPost}) =>{
      
-        // const [adress, setAdress]=useState();
-
-        // useEffect(()=>{
-        //     if  getValues("image")
-        //   },[]);
+       
     
-    const {register, handleSubmit, formState: {errors}}= useForm({mode: 'onSubmit'});
-    const onSubmit = (data)=>{
-        console.log(data);
-    };
-    console.log(errors);
+    // const {register, handleSubmit, formState: {errors}}= useForm({mode: 'onSubmit'});
+  
+    // console.log(errors);
 
-    console.log({useForm});
+    const addUserPost = async(data)=>{
+
+         await api.addPostForm(data);
+        console.log({data});
+    }
+
+  
+
+
+
 
 
     return(
     
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={hendlyFormSubmit}>
 
         <div >
             <h1 className='head'>ПОДЕЛИСЬ СВОИМ РЕЦЕПТОМ</h1>
@@ -62,53 +65,53 @@ export const FormPost = ({setActiveModal}) =>{
        
              <input 
              type='text'
-              //  name='image' 
+               name='image' 
              placeholder="введите url картинки" 
              className = 'input_form'
-             {...register('image',{
-                required: "обязательное поле",
+            //  {...register('image',{
+            //     required: "обязательное поле",
 
-             })}
-               //  value = {userFormPost.adress}
-               //  onChange={hendlyFormInput}
+            //  })}
+                value = {userFormPost.adress}
+                onChange={hendlyFormInput}
              >
              </input>
            
-                <img src= {useForm.image} className='image_post' />
+                <img src= {userFormPost.image} className='image_post' />
             
 
              <input
              type='text'
-              //  name='title'
+               name='title'
              placeholder="название блюда"
              className = 'input_form'
-            //  value = {userFormPost.title}
-            //  onChange={hendlyFormInput}
-             {...register('title',{
-                required: "обязательное поле",
+             value = {userFormPost.title}
+             onChange={hendlyFormInput}
+            //  {...register('title',{
+            //     required: "обязательное поле",
 
-             })}
+            //  })}
              >
              
             </input>
             <textarea
              type='text'
-            //  name='text'
+             name='text'
              placeholder="рецепт"
              className = 'input_form'
-             {...register('text',{
-                required: "обязательное поле",
+            //  {...register('text',{
+            //     required: "обязательное поле",
 
-             })}
-            //  value = {userFormPost.text}
-            //  onChange={hendlyFormInput}
+            //  })}
+             value = {userFormPost.text}
+             onChange={hendlyFormInput}
              >
             </textarea>
             <div className=' btn_close_create'>
                 <button type='button' className='btn_c' onClick={()=>setActiveModal(false)  }> ОТМЕНА </button>
-            <button type='submit' className='btn_c'> СОЗДАТЬ</button>
+            <button type='submit' className='btn_c' onClick={hendlyFormSubmit}> СОЗДАТЬ</button>
             </div>
             
     </form>
 );  
-}
+            }
