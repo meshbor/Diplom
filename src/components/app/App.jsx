@@ -5,7 +5,7 @@ import  {Header}  from '../Header/header.jsx';
 import api from '../Utilites/api';
 import { CollectionPage } from '../Page/Collection/collection';
 import { PostPage } from '../Page/PostPage/postPage';
-import {Route, Routes } from 'react-router-dom';
+import {Route, Routes, useLocation } from 'react-router-dom';
 import { UserContext } from '../../context/userContext';
 import { CardContext } from '../../context/cardContext';
 import { Form } from '../Form/form';
@@ -14,6 +14,9 @@ import { Modal } from '../Form/Modal/modal';
 import { SubHeader } from '../SubHeader/subHeader';
 import { FormPost } from '../FormPost/formPost';
 import  SearchInfo from '../SearchInfo/searchInfo.jsx';
+import { Login } from '../Login/login';
+import { Register } from '../Register/register';
+import { ResetPass } from '../ResetPass/resetPass';
 
 
 
@@ -40,8 +43,9 @@ function App() {
     const [searchQuery, setSearchQuery] = useState('');
     const [currentUser,setCurrentUser]=useState([null]);
     const [contacts, setContacts]=useState([]);
-    const [activeModal, setActiveModal] = useState(false);
+    const [activeModal, setActiveModal] = useState(true);
     const [dataPostForm, setDataPostForm] = useState([]);
+   
 
 
     const debounceSearchQuery = useDebounce(searchQuery, 2500);
@@ -106,53 +110,86 @@ const addPost = (dataPostForm)=>{
   setDataPostForm([...cards, dataPostForm])
   console.log();
 }
+const location = useLocation();
+const backgroundLocation = location.state?.backgroundLocation;
+const initialPath = location.state?.location;
  
   return (
     <>
     <CardContext.Provider value={{cards: cards, setActiveModal:setActiveModal}}>
     <UserContext.Provider value={{currentUser:currentUser,  headlyPostLike: headlyPostLike }}>
       <div className='content_container'>
-       <div className='content_carts'>
+       <div className='content_cards'>
          <div className="App">
    
 
 
            
-         <Header changeInput={handleInputChange}/> 
-         <SearchInfo searchCount={cards.length} searchText={searchQuery} />
-           <SubHeader setActiveModal={setActiveModal} ></SubHeader>
+         <Header changeInput={handleInputChange} setActiveModal={setActiveModal}/> 
 
-           <Routes>
+         <SearchInfo searchCount={cards.length} searchText={searchQuery} />
+
+
+           <SubHeader setActiveModal={setActiveModal} ></SubHeader>
+           
+
+           <Routes location={backgroundLocation && {...backgroundLocation, path:initialPath || location}}>
+            <Route path='/login' element = {
+           <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
+          
+          <Login/>
+          
+          </Modal>
+            }>
+          </Route>
+          <Route path='/register' element = {
+           <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
+          
+          <Register/>
+          
+          </Modal>
+            }>
+          </Route>
+          <Route path='/resetPass' element = {
+           <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
+          
+          <ResetPass/>
+          
+          </Modal>
+            }>
+          </Route>
            <Route path ='/' element = {
            <CollectionPage  cards={cards} currentUser={currentUser} headlyPostLike ={headlyPostLike} />
             }
             > </Route>
         <Route path='post/:postId' element = {<PostPage currentUser={currentUser}/>}></Route>
-        <Route path='form' element = {<Form addContact = {addContact} />}></Route>
+
         <Route path='formPost' element = {<FormPost addPost={addPost} />}></Route>
+
+        <Route path='/FormPost' element = {
+           <Modal activeModal={activeModal}setActiveModal={setActiveModal}>
+          
+          <FormPost addPost={addPost}/>
+          
+          </Modal>
+            }>
+          </Route>
        </Routes>
-       <div>
-       {contacts.length && contacts.map((el) => (
-       <div>
-       <p>{el.lastName}</p>
-       <p>{el.name}</p>
-       <p>{el.phoneNumber}</p>
 
-       </div> 
-       ))}
-       </div>
-       <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
-              <div style={{ width: '300px', height: '300px' }}>
-                <RegistrationForm addContact={addContact} />
-              </div>
-            </Modal>
-            <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
-              <div style={{ width: '600px', height: '100%' }}>
-                <FormPost addPost={addPost} setActiveModal={setActiveModal} />
-              </div>
-            </Modal>
-
-       <Footer />
+       {backgroundLocation && (
+        <Routes>
+           <Route path='/login' element = {
+           <Modal activeModal={activeModal}setActiveModal={setActiveModal}>
+          
+          <Login/>
+          
+          </Modal>
+            }>
+          </Route>
+        </Routes>
+       )}    
+       
+  <Footer />
      </div>
     </div>
   </div>
