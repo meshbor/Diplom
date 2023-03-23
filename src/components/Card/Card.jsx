@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import './index.css';
-import {ReactComponent as Heart} from '../Assets/heart3.svg'; //импортируем реакт компонент, делаем его кастомным тегом
-import comment from '../Assets/comment.svg';
-import star from '../Assets/star.svg';
+import {ReactComponent as Heart} from '../assets/heart3.svg'; //импортируем реакт компонент, делаем его кастомным тегом
+import comment from '../assets/comment.svg';
+import star from '../assets/star.svg';
 import cn from 'classnames';
 import { Link } from "react-router-dom";
+
 import {UserContext} from '../../context/userContext';
 
 const Card=({title,
@@ -22,9 +23,10 @@ const Card=({title,
 // }
 const instance = useContext( UserContext ); // через контекст ловим юзера
 
-  const liked = likes.some((id) => id === instance?._id); //проверяем не является ли пользователь (id) элементом массива лайков данного поста
+  const liked = likes.some((id) => id === instance?.currentUser._id); //проверяем не является ли пользователь (id) элементом массива лайков данного поста
 const likesLength = `${likes.length}`;
 const commentsCount = `${comments.length}`;
+
 return(
 <div className="card">
 

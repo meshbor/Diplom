@@ -1,8 +1,8 @@
 
 import React, { useEffect, useState } from 'react';
-import Spinner from "../../Spinner/spinner";
-import api from "../../Utilites/api";
-import { Post } from "../../Post/Post";
+import Spinner from "../../spinner/Spinner";
+import api from "../../utilites/api";
+import { Post } from "../../post/Post";
 import { useParams } from "react-router-dom";
 import { useContext } from 'react';
 import { UserContext } from '../../../context/userContext';
@@ -11,14 +11,14 @@ export const PostPage = ()=>{
     const [cards, setCards]=useState([]);
     const [currentUser,setCurrentUser]=useState([null]);
     const [ isloading,setIsloading]=useState([false]);
-    const [ post,setPost]=useState([null]);
+    const [ posts,setPost]=useState([null]);
 
     const {postId} = useParams();
     const {headlyPostLike} = useContext(UserContext);
-console.log(postId);
+// console.log(postId);
 
-const onPostsLike=()=>{
-   headlyPostLike(post)
+const onPostsLike=()=>{ // ловим тут функцию онпостлайк, которая будет проверять залайкан ли пост пользователем
+   headlyPostLike(posts)
 };
     useEffect(()=>{
 setIsloading(true);
@@ -41,10 +41,13 @@ api // делаем запрос
 
       <div className="content_container">
 
+      
+
          <div className="content_carts">
+            
           
           {
-            isloading? (<Spinner/>) : (<Post {...post}
+            isloading? (<Spinner/>) : (<Post {...posts}
                 currentUser ={currentUser} 
                 onPostsLike={onPostsLike}/>)
           }

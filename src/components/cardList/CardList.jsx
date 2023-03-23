@@ -8,6 +8,8 @@ const CardList = ({onPostsLike}) => {
     const {cards} = useContext(CardContext);
     return (
         
+
+        
         <div className='cards'>
             
             {cards.map((item, index)=> // раскрываем массив методом map
