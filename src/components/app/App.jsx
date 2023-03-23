@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './index.css';
-import  {Footer}  from '../Footer/footer.jsx';
-import  {Header}  from '../Header/header.jsx';
-import api from '../Utilites/api';
-import { CollectionPage } from '../Page/Collection/collection';
-import { PostPage } from '../Page/PostPage/postPage';
+import  {Footer}  from '../footer/footer.jsx';
+import  {Header}  from '../header/header.jsx';
+import api from '../utilites/api';
+import { CollectionPage } from '../page/Collection/collection';
+import { PostPage } from '../page/PostPage/postPage';
 import {Route, Routes, useLocation } from 'react-router-dom';
 import { UserContext } from '../../context/userContext';
 import { CardContext } from '../../context/cardContext';

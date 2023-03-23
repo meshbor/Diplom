@@ -7,10 +7,10 @@ import {
   PASS_REGEXP,
   VALIDATE_CONFIG,
 } from '../../constants/constants';
-import authApi from '../Utilites/authApi';
+import authApi from '../utilites/authApi';
 import { useContext, useState } from 'react';
 import { UserContext } from '../../context/userContext';
-import { parseJwt } from '../Utilites/parseJWT';
+import { parseJwt } from '../utilites/parseJWT';
   export const ResetPass = () => {
     const {
       register,

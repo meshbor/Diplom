@@ -8,7 +8,7 @@ import {
   PASS_REGEXP,
   VALIDATE_CONFIG,
 } from '../../constants/constants';
-import authApi from '../Utilites/authApi';
+import authApi from '../utilites/authApi';
 
 export const Register = () => {
     const {
